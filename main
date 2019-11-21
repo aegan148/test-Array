@@ -15,8 +15,8 @@ private:
 
 };
 
-void ChArray::GuesSize(int* arr, const int& siz) {
-	int counter = 0;
+void ChArray::GuesSize(int* arr, const int& siz) { //установление размера для массива
+	int counter = 0;  //путем подсчета нужных чисел
 	for (int i = 0; i < siz; i++) {  //подсчет количествва чисел больше 6
 		if (arr[i] > 14) { counter++; }
 	}
@@ -33,7 +33,7 @@ void ChArray::Filling(int* Tarr, const int& siz) {
 	}
 };
 
-void ChArray::Show() {
+void ChArray::Show() { //вывод на экран
 	for (int i = 0; i < Size; i++) {
 		std::cout << arr[i] << std::endl;
 	}
@@ -55,7 +55,7 @@ int main()
 	a.Show();
 }
 
-void sort(int* arr, int sz) {
+void sort(int* arr, int sz) { //пузырьковая сорт
 	int temp;
 	for (int i = 0; i < sz; i++)
 
