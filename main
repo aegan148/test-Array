@@ -1,0 +1,75 @@
+#include <iostream>
+
+void sort(int* arr, int sz);
+
+class ChArray {
+public: ChArray() { arr = nullptr; Size = NULL; };
+	void GuesSize(int* arr, const int& siz);
+	void Filling(int* arr, const int& siz);
+	void Show();
+	~ChArray() { delete[] arr; };
+
+private:
+	int Size;
+	int* arr;
+
+};
+
+void ChArray::GuesSize(int* arr, const int& siz) {
+	int counter = 0;
+	for (int i = 0; i < siz; i++) {  //подсчет количествва чисел больше 6
+		if (arr[i] > 14) { counter++; }
+	}
+	this->Size = counter;
+};
+
+void ChArray::Filling(int* Tarr, const int& siz) {
+	arr = new int[Size];
+
+	for (int i = 0; i < siz; i++) { //цикл для заполнения второго массива. предполагается,что с его размером все ок
+		if (Tarr[i] > 14) {  //если значение больше то заполняем ячейку
+			arr[i] = Tarr[i];
+		}
+	}
+};
+
+void ChArray::Show() {
+	for (int i = 0; i < Size; i++) {
+		std::cout << arr[i] << std::endl;
+	}
+};
+
+
+int main()
+{
+	const int size = 10;
+	int arr[size];
+	for (int i = 0; i < size; i++) { //заполняем исходный массив 
+		arr[i] = rand() % 30;
+	}
+	sort(arr, size); // сначала отсортируем ибо без сортировки инициализируется мусор
+
+	ChArray a;
+	a.GuesSize(arr, size);
+	a.Filling(arr, size);
+	a.Show();
+}
+
+void sort(int* arr, int sz) {
+	int temp;
+	for (int i = 0; i < sz; i++)
+
+	{
+		for (int j = i + 1; j < sz; j++)
+		{
+
+			if ((arr[i] < arr[j]))
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+
+		}
+	};
+}
